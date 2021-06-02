@@ -8,7 +8,6 @@ import { Component } from "@angular/core";
     <hr/>
     <event-thumbnail [event]="event1"></event-thumbnail>
   </div>
-
   `
 })
 
