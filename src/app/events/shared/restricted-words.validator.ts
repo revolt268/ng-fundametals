@@ -1,5 +1,7 @@
 import { FormControl } from "@angular/forms";
 
+
+// This is also a good example of an arrow function that is beign returned by another function
 export function restrictedWords(words) {
   return (control: FormControl): {[key: string]: any} => {
     if (!words) return null;
