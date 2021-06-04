@@ -25,6 +25,10 @@ export class EventDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       this.event = this.eventService.getEvent(+params['id']);
+      // When changing the route parameter we need to also change the state
+      //  for example the Add mode here needs to go back to false
+      //  when we change to another event, you may need to do this
+      //  for other states as well such as teh filters
       this.addMode = false;
     })
   }
