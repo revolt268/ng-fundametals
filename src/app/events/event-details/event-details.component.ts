@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
-import { ISession } from "../shared";
+import { IEvent, ISession } from "../shared";
 import { EventService } from "../shared/event.service";
 
 @Component({
@@ -23,14 +23,14 @@ export class EventDetailsComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.route.params.forEach((params: Params) => {
-      this.event = this.eventService.getEvent(+params['id']);
-      // When changing the route parameter we need to also change the state
-      //  for example the Add mode here needs to go back to false
-      //  when we change to another event, you may need to do this
-      //  for other states as well such as teh filters
-      this.addMode = false;
-    })
+    this.route.data.forEach((data) => {
+        this.event = data['event'];
+        // When changing the route parameter we need to also change the state
+        //  for example the Add mode here needs to go back to false
+        //  when we change to another event, you may need to do this
+        //  for other states as well such as teh filters
+        this.addMode = false;
+      });
   }
 
   addSession(){
