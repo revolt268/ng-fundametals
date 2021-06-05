@@ -51,12 +51,15 @@ export class SessionListComponent implements OnChanges
   }
 }
 
-function sortByNameAsc(s1: ISession, s2: ISession){
+// this is an example of an arrow function that sets the const value to that function
+// This is only scoped to this file and not globally, also it can't be changed
+const sortByNameAsc = (s1: ISession, s2: ISession) =>{
   if (s1.name > s2.name) return 1
   else if (s1.name === s2.name) return 0
   else return -1
 }
 
+// This function is techincally scoped globally and can be overriden 
 function sortByVotesDesc(s1: ISession, s2: ISession) {
   return s2.voters.length - s1.voters.length;
 }
