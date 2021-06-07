@@ -8,6 +8,8 @@ import { SessionListComponent } from "./session-list.component"
 import { UpvoteComponent } from "./upvote.component";
 import { VoterService } from "./voter.service";
 
+// Integration tests are used to test the template and can be very complex
+
 describe("SessionListComponent", () => {
 
   let mockAuthService,

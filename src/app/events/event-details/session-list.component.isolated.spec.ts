@@ -1,6 +1,7 @@
 import { ISession } from "../shared";
 import { SessionListComponent } from "./session-list.component"
 
+// Isolated tests just test the component and not the template, and are easier to setup
 
 describe('SessionListComponent', () => {
   let component: SessionListComponent;
