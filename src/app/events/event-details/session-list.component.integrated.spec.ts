@@ -1,9 +1,11 @@
 import { DebugElement } from "@angular/core"
 import { ComponentFixture, TestBed } from "@angular/core/testing"
 import { By } from "@angular/platform-browser";
+import { CollapsibleWellComponent } from "src/app/common";
 import { AuthService } from "src/app/user/auth.service";
 import { DurationPipe } from "../shared";
 import { SessionListComponent } from "./session-list.component"
+import { UpvoteComponent } from "./upvote.component";
 import { VoterService } from "./voter.service";
 
 
@@ -22,7 +24,12 @@ describe("SessionListComponent", () => {
     TestBed.configureTestingModule({
       declarations:[
         SessionListComponent,
-        DurationPipe
+        DurationPipe,
+        // Adding these changes this test from a shallow test to a deep test
+        //  Deep test include the components children and can get pretty
+        //  complicated
+        //CollapsibleWellComponent,
+        //UpvoteComponent
       ],
       providers: [
         { provide: AuthService, useValue: mockAuthService },
