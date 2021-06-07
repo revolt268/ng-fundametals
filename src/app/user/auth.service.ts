@@ -14,8 +14,8 @@ export class AuthService {
     // the username property here has to match the property on the server
     //   this is why it is all lower case
     //   This will be the body
-    let loginInfo = { username: userName, password: password };
-    let options = { headers: new HttpHeaders({ 'Contect-Type': 'application/json' })};
+    const loginInfo = { username: userName, password: password };
+    const options = { headers: new HttpHeaders({ 'Contect-Type': 'application/json' })};
 
     // This url can be completely different depnding on how the
     //   api is writen for the login and the details can vary
@@ -59,15 +59,15 @@ export class AuthService {
     this.currentUser.firstName = firstName;
     this.currentUser.lastName = lastName;
 
-    let options = { headers: new HttpHeaders({ 'Contect-Type': 'application/json' })};
-    let url =`/api/users/${this.currentUser.id}`;
+    const options = { headers: new HttpHeaders({ 'Contect-Type': 'application/json' })};
+    const url =`/api/users/${this.currentUser.id}`;
     return this.http.put(url, this.currentUser, options);
   }
 
   logout(){
     this.currentUser = undefined;
     
-    let options = { headers: new HttpHeaders({ 'Contect-Type': 'application/json' })};
+    const options = { headers: new HttpHeaders({ 'Contect-Type': 'application/json' })};
     return this.http.post('/api/logout', {}, options);
   }
 }

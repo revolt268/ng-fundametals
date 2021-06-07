@@ -16,16 +16,15 @@ import { AuthService } from "../user/auth.service";
 
 export class NavBarcomponent {
 
-  searchTerm: string = "";
+  searchTerm = "";
   foundSessions: ISession[];
 
   constructor(public auth: AuthService,
               private eventService: EventService){
   }
 
-  searchSessions(searchTerm){
-    this.eventService.searchSessions(searchTerm).subscribe
-    (sessions => {
+  searchSessions(searchTerm: string): void{
+    this.eventService.searchSessions(searchTerm).subscribe(sessions => {
         this.foundSessions = sessions;
       }
     )
