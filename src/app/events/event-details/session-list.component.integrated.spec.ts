@@ -16,6 +16,8 @@ describe("SessionListComponent", () => {
       debugEl: DebugElement;
 
   beforeEach(() => {
+    mockAuthService = { isAuthenticated: () => true, currentUser: {userName: 'joe'} };
+    mockVoterService = { userHasVoted: () => true};
     TestBed.configureTestingModule({
       declarations:[
         SessionListComponent,
@@ -33,7 +35,7 @@ describe("SessionListComponent", () => {
   })
 
   describe('initial display', () => {
-    it('should have the correct title', () => {
+    it('should have the correct name', () => {
       // Aranged component
       component.sessions = [
         {name: 'Session 1', id: 3, presenter: 'Joe', duration: 1, level: 'beginner', abstract: 'abstract', voters: ['john', 'bob']}
@@ -45,6 +47,8 @@ describe("SessionListComponent", () => {
 
       // the Action
       fixture.detectChanges();
+
+      expect(element.querySelector('[well-title]').textContent).toContain('Session 1')
     })
   })
 })
