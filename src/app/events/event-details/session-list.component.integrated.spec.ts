@@ -1,4 +1,4 @@
-import { DebugElement } from "@angular/core"
+import { Component, DebugElement, Input, Output } from "@angular/core"
 import { ComponentFixture, TestBed } from "@angular/core/testing"
 import { By } from "@angular/platform-browser";
 import { CollapsibleWellComponent } from "src/app/common";
@@ -7,6 +7,17 @@ import { DurationPipe } from "../shared";
 import { SessionListComponent } from "./session-list.component"
 import { UpvoteComponent } from "./upvote.component";
 import { VoterService } from "./voter.service";
+
+@Component({
+  selector: "upvote"
+})
+class MockUpvoteComponent {
+  iconColor: string;
+  @Input() count: number;
+  @Input() set voted(val){
+    this.iconColor = val ? 'red': 'white';
+  }
+}
 
 
 describe("SessionListComponent", () => {
@@ -25,6 +36,7 @@ describe("SessionListComponent", () => {
       declarations:[
         SessionListComponent,
         DurationPipe,
+        MockUpvoteComponent
         // Adding these changes this test from a shallow test to a deep test
         //  Deep test include the components children and can get pretty
         //  complicated
