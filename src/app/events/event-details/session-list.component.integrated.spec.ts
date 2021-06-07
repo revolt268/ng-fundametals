@@ -1,4 +1,4 @@
-import { Component, DebugElement, Input, Output } from "@angular/core"
+import { Component, DebugElement, Input, NO_ERRORS_SCHEMA, Output } from "@angular/core"
 import { ComponentFixture, TestBed } from "@angular/core/testing"
 import { By } from "@angular/platform-browser";
 import { CollapsibleWellComponent } from "src/app/common";
@@ -7,18 +7,6 @@ import { DurationPipe } from "../shared";
 import { SessionListComponent } from "./session-list.component"
 import { UpvoteComponent } from "./upvote.component";
 import { VoterService } from "./voter.service";
-
-@Component({
-  selector: "upvote"
-})
-class MockUpvoteComponent {
-  iconColor: string;
-  @Input() count: number;
-  @Input() set voted(val){
-    this.iconColor = val ? 'red': 'white';
-  }
-}
-
 
 describe("SessionListComponent", () => {
 
@@ -35,8 +23,7 @@ describe("SessionListComponent", () => {
     TestBed.configureTestingModule({
       declarations:[
         SessionListComponent,
-        DurationPipe,
-        MockUpvoteComponent
+        DurationPipe
         // Adding these changes this test from a shallow test to a deep test
         //  Deep test include the components children and can get pretty
         //  complicated
@@ -46,6 +33,9 @@ describe("SessionListComponent", () => {
       providers: [
         { provide: AuthService, useValue: mockAuthService },
         { provide: VoterService, useValue: mockVoterService }
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
       ]
     });
     fixture = TestBed.createComponent(SessionListComponent);
